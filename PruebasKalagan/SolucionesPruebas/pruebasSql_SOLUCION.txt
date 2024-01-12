@@ -1,7 +1,7 @@
 --Pruebas SQL DB2
 
 
-******** Dada la tabla ORDER (especificada con el create table que hay a continuación), y dada  una lista de IDs de pedido (coincidenctes con la columna ORDERS_ID) se necesita crear una consulta que obtenga el subconjunto de IDs de pedido que no se encuentran en la tabla.
+******** Dada la tabla ORDER (especificada con el create table que hay a continuaciÃ³n), y dada  una lista de IDs de pedido (coincidenctes con la columna ORDERS_ID) se necesita crear una consulta que obtenga el subconjunto de IDs de pedido que no se encuentran en la tabla.
 -- Lista de IDS de pedido: 11111111, 22222222,33333333,44444444
 --TABLAS
 CREATE TABLE ORDER(
@@ -20,7 +20,7 @@ FROM (VALUES (11111111), (22222222), (33333333), (44444444)) AS t (id)
 WHERE t.id NOT IN (SELECT ORDERS_ID FROM "ORDER");
 
 
-******** Sacar un informe de cuántos pedidos hemos hecho por día agrupados por nombre tienda
+******** Sacar un informe de cuÃ¡ntos pedidos hemos hecho por dÃ­a agrupados por nombre tienda
 -- TABLAS
 CREATE TABLE ORDERS_ID (
     ORDERS_ID INTEGER NOT NULL,
@@ -52,9 +52,9 @@ ORDER BY STORE_NAME, ORDER_DATE;
 
 Deben crearse dos soluciones:
 
-- Una que obtenga el resultado solo con una query, sin crear procedimientos ni tablas físicas temporales.
+- Una que obtenga el resultado solo con una query, sin crear procedimientos ni tablas fÃ­sicas temporales.
 
-- Otra a elección. Esta es optativa
+- Otra a elecciÃ³n. Esta es optativa
 
 
 SELECT UserId, UserName
@@ -134,7 +134,7 @@ User2 Role4
 Maria Role5
 
 
-El resultado sería el siguiente:
+El resultado serÃ­a el siguiente:
 
 "Ana"; "OrderQuery,OrderUpdate" ; "MANAGER"
 
@@ -143,7 +143,7 @@ El resultado sería el siguiente:
 "Maria"; "Report"; "CONSULTANT"
 
 
--- SOLUCIÓN 1:
+-- SOLUCIÃ“N 1:
 
 SELECT u.UserName, STRING_AGG(r.RoleNAME, ',') AS Roles,
     CASE
@@ -159,7 +159,7 @@ LEFT JOIN ROLE r ON mr.RoleId = r.RoleID
 GROUP BY u.UserName;
 
 
--- Solución 2:
+-- SOLUCIÃ“N 2:
 
 WITH USER_ROLE AS (
       SELECT U.UserId, U.UserName, R.RoleNAME,
